@@ -23,7 +23,7 @@ export class ProductService {
   public async findById(id: string): Promise<Product> {
     const resp = await this.productModel.findById(id);
     if (!resp) {
-      throw new NotFoundException('Book not found.');
+      throw new NotFoundException('Product not found.');
     }
     return resp;
   }
