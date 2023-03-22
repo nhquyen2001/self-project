@@ -4,8 +4,8 @@ import { Model } from 'mongoose';
 import { User } from '../schemas/user.schema';
 import { JwtService } from '@nestjs/jwt'
 import * as bcrypt from 'bcryptjs';
-import { SignUpDto } from './../dtos/signup.dto';
-import { LogInDto } from '../dtos/login.dto';
+import { SignupDto } from './../dtos/signup.dto';
+import { LoginDto } from '../dtos/login.dto';
 
 @Injectable()
 export class AuthService {
@@ -15,8 +15,8 @@ export class AuthService {
     private readonly jwtService: JwtService
   ) { }
 
-  public async signUp(signUpDto: SignUpDto): Promise<{ token: string }> {
-    const { firstName, lastName, email, phone, password } = signUpDto;
+  public async signup(signupDto: SignupDto): Promise<{ token: string }> {
+    const { firstName, lastName, email, phone, password } = signupDto;
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -32,7 +32,7 @@ export class AuthService {
     return { token }
   }
 
-  public async login(loginDto: LogInDto): Promise<{ token: string }> {
+  public async login(loginDto: LoginDto): Promise<{ token: string }> {
     const { email, password } = loginDto;
     const user = await this.userModel.findOne({ email })
     if (!user) {
