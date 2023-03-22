@@ -1,23 +1,24 @@
-import { IsNotEmpty, IsNumber, IsString } from "class-validator"
+import { IsEnum, IsNotEmpty, IsNumber, IsString } from "class-validator"
 import { Category } from "../schemas/product.schema"
 
 export class CreateProductDto {
   @IsNotEmpty()
   @IsString()
-  name: string
+  readonly name: string
 
   @IsNotEmpty()
   @IsString()
-  description: string
+  readonly description: string
 
   @IsNotEmpty()
   @IsString()
-  brand: string
+  readonly brand: string
 
   @IsNotEmpty()
   @IsNumber()
-  price: number
+  readonly price: number
 
   @IsNotEmpty()
+  @IsEnum(Category, { message: 'Please enter correct category' })
   readonly category: Category
 }
