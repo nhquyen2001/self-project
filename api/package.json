@@ -17,7 +17,9 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "migrate": "node migrate",
+    "migrate:create": "./node_modules/.bin/migrate create"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
@@ -32,6 +34,7 @@
     "bcryptjs": "^2.4.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "migrate": "^1.8.0",
     "mongoose": "^7.0.2",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
